@@ -1,0 +1,22 @@
+{
+  "name": "rsvp",
+  "version": "1.0.0",
+  "description": "Marriage RSVP application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeanVJ/RSVP.git"
+  },
+  "keywords": [
+    "rsvp"
+  ],
+  "author": "VJ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MeanVJ/RSVP/issues"
+  },
+  "homepage": "https://github.com/MeanVJ/RSVP#readme"
+}
