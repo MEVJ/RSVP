@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>RSVP</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<style>
+	.form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h3>RSVP</h3>
+			</div>
+		</div>
+		<div style="padding-bottom:3rem;"></div>
+		<div id="rsvpForm">
+			<div class=row>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="Name">Name</label>
+						<input type="text" class="form-control" id="Name" placeholder="Name">
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="email">Email address</label>
+						<input type="email" class="form-control" id="email" placeholder="Email">
+					</div>
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="Mobile">Mobile Number</label>
+						<input type="tel" class="form-control" id="Mobile" placeholder="Mobile Number">
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<label for="noOfPeople">Number of Guest</label>
+					<div>
+						<label class="radio-inline">
+  					<input type="radio" name="noOfPeople" id="noOfPeople" value="1"> 1
+					</label>
+						<label class="radio-inline">
+  					<input type="radio" name="noOfPeople" id="noOfPeople" value="2"> 2
+					</label>
+						<label class="radio-inline">
+  					<input type="radio" name="noOfPeople" id="noOfPeople" value="3"> 3
+					</label>
+						<label class="radio-inline">
+  					<input type="radio" name="noOfPeople" id="noOfPeople" value="4"> 4
+					</label>
+					</div>
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-sm-6 col-xs-12">
+					<label for="mealPreference">Meal Preference</label>
+					<div>
+						<label class="radio-inline">
+  					<input type="radio" name="mealPreference" id="mealPreference" value="Veg"> Veg
+					</label>
+						<label class="radio-inline">
+  					<input type="radio" name="mealPreference" id="mealPreference" value="Non-Veg"> Non-Veg
+					</label>
+					</div>
+				</div>
+			</div>
+			<div style="padding-bottom:2rem;"></div>
+			<div class=row>
+				<div class="col-xs-12 text-center">
+					<button id="submit" class="btn btn-success btn-lg"  style="padding-left:3rem;padding-right:3rem;">RSVP</button>
+				</div>
+			</div>
+		</div>
+		<div id="success" class="row" style="display:none;">
+			<div class="col-xs-12 text-center">
+				<div class="glyphicon glyphicon-ok" style="font-size:5rem;color:#27ae60;"></div>
+			</div>
+			<div style="margin-bottom:2rem;"></div>
+			<div class="col-xs-12 text-center">
+				<h4>Thank you for the RSVP, do mark the date on your calendar</h4>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(document).ready(function(){
+    $("#submit").click(function(e){
+			e.stopPropagation();
+			e.preventDefault();
+        var data={};
+				data.name=$('#Name').val();
+				data.email=$('#email').val();
+				data.phone=$('#Mobile').val();
+				data.noOfPeople=$('input[name=noOfPeople]:checked').val();
+				data.mealPreference=$('input[name=mealPreference]:checked').val();
+				$.ajax({
+  			method: "POST",
+  			url: "http://localhost:3000/api/rsvp",
+  			data: data
+				}).done(function( msg ) {
+    				$("#rsvpForm").hide();
+						$("#success").show();
+  		 });
+    });
+	});
+	</script>
+</body>
+
+</html>

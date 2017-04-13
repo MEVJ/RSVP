@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/MeanVJ/RSVP/issues"
   },
-  "homepage": "https://github.com/MeanVJ/RSVP#readme"
+  "homepage": "https://github.com/MeanVJ/RSVP#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "path": "^0.12.7"
+  }
 }
